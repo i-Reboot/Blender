@@ -836,6 +836,14 @@ public:
 	virtual int get_group() { return NODE_GROUP_LEVEL_3; }
 };
 
+class ToPolarNode : public ShaderNode {
+public:
+	SHADER_NODE_CLASS(ToPolarNode)
+		bool constant_fold(ShaderOutput *socket, float3 *optimized_value);
+
+	virtual int get_group() { return NODE_GROUP_LEVEL_3; }
+};
+
 class MathNode : public ShaderNode {
 public:
 	SHADER_NODE_CLASS(MathNode)

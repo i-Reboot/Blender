@@ -3693,6 +3693,7 @@ static void registerShaderNodes(void)
 	register_node_type_sh_tex_checker();
 	register_node_type_sh_tex_brick();
 	register_node_type_sh_tex_pointdensity();
+	register_node_type_sh_to_polar();
 }
 
 static void registerTextureNodes(void)

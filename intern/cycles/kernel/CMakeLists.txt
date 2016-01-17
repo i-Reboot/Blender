@@ -126,6 +126,7 @@ set(SRC_SVM_HEADERS
 	svm/svm_sky.h
 	svm/svm_tex_coord.h
 	svm/svm_texture.h
+	svm/svm_to_polar.h
 	svm/svm_types.h
 	svm/svm_value.h
 	svm/svm_vector_transform.h

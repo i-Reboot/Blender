@@ -4067,6 +4067,46 @@ void BlackbodyNode::compile(OSLCompiler& compiler)
 	compiler.add(this, "node_blackbody");
 }
 
+/* Tp Polar */
+
+ToPolarNode::ToPolarNode()
+	: ShaderNode("to_polar")
+{
+	add_input("Temperature", SHADER_SOCKET_FLOAT, 1200.0f);
+	add_output("Color", SHADER_SOCKET_COLOR);
+}
+
+bool ToPolarNode::constant_fold(ShaderOutput *socket, float3 *optimized_value)
+{
+	ShaderInput *temperature_in = input("Temperature");
+
+	if (socket == output("Color")) {
+		if (temperature_in->link == NULL) {
+			*optimized_value = svm_math_blackbody_color(temperature_in->value.x);
+
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void ToPolarNode::compile(SVMCompiler& compiler)
+{
+	ShaderInput *temperature_in = input("Temperature");
+	ShaderOutput *color_out = output("Color");
+
+	compiler.stack_assign(color_out);
+
+	compiler.stack_assign(temperature_in);
+	compiler.add_node(NODE_TO_POLAR, temperature_in->stack_offset, color_out->stack_offset);
+}
+
+void ToPolarNode::compile(OSLCompiler& compiler)
+{
+	compiler.add(this, "node_to_polar");
+}
+
 /* Output */
 
 OutputNode::OutputNode()

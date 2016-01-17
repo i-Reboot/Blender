@@ -787,6 +787,7 @@ struct ShadeResult;
 #define SH_NODE_OUTPUT_LINESTYLE		190
 #define SH_NODE_UVALONGSTROKE			191
 #define SH_NODE_TEX_POINTDENSITY		192
+#define SH_NODE_TO_POLAR				193				
 
 /* custom defines options for Material node */
 #define SH_NODE_MAT_DIFF   1
@@ -938,6 +939,7 @@ void            ntreeGPUMaterialNodes(struct bNodeTree *ntree, struct GPUMateria
 #define CMP_NODE_PLANETRACKDEFORM	320
 #define CMP_NODE_CORNERPIN          321
 #define CMP_NODE_SWITCH_VIEW    322
+#define CMP_NODE_TO_POLAR_C		323
 
 /* channel toggles */
 #define CMP_CHAN_RGB		1
